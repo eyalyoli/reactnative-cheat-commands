@@ -50,6 +50,8 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 2. npx jetify
 3. (run on background terminal) npx react-native start
 4. cd android
+5. setup keystore (see below) 
+6. ./gradlew bundleRelease
 
 ## setup keystore
 1. keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000
@@ -89,7 +91,6 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 	}
 	...
 ```
-5. ./gradlew bundleRelease
 
 ## build troubleshooting
 * "Task :react-native-reanimated:androidJavadoc FAILED" => add to build.gradle below allprojects:
