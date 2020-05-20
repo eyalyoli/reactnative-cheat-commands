@@ -4,7 +4,7 @@
 2. install jdk
 3. set env JAVA_HOME
 4. install watchman?
-5. npm install -g expo-cli
+5. ```npm install -g expo-cli```
 
 
 ## Android setup
@@ -20,7 +20,7 @@
 3. install android sdks & tools via sdk manager (including NDK)
 
 ## iOS setup
-1. install [cocaopods](@)
+1. install [cocaopods](https://guides.cocoapods.org/using/getting-started.html) - deps managment
 2. ...
 
 # Project management
@@ -30,12 +30,12 @@
 
 ## Run project
 ### Using expo
-1. expo start - this runs the metro bundler
+1. ```expo start``` - this runs the metro bundler
 2. choose from the opened web UI where to run the app
 
 ### Using react-native
 1. to run the metro bundler, run on a background terminal: ```npx react-native start```
-2. run: npx react-native run-android/run-ios
+2. ```npx react-native run-android/run-ios```
 
 ### File watches limit fix
 If after running the metro bundler you get warnings/errors on number of file watched was reached then run:
@@ -72,15 +72,15 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then run
 		expo build:android -t app-bundle 
 
 ## Android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
-1. npm install -g jetifier
-2. npx jetify
-3. run on background terminal: npx react-native start
-4. cd android
+1. ``npm install -g jetifier``
+2. ``npx jetify``
+3. run on background terminal: ``npx react-native start``
+4. ```cd android```
 5. setup keystore (see below) 
-6. ./gradlew bundleRelease
+6. ```./gradlew bundleRelease```
 
 ## Setup keystore
-1. keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000
+1. ```keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000```
 2. place keystore on android dir
 3. add to gradle.properties:
 ```
@@ -137,7 +137,7 @@ org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m
 # iOS build
 
 ## Background
-Building uses cocaopods and Xcode. You need to have a Mac.
+Building uses Cocaopods (for dependency management) and Xcode. You need to have a Mac.
 
 To simulate iOS products, we can use:
 * a pyshical iOS device
