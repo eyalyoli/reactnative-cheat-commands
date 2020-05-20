@@ -1,4 +1,5 @@
 # setup react native env ([origin](https://reactnative.dev/docs/environment-setup))
+## react native with expo-cli
 1. install node
 2. install jdk
 3. set env JAVA_HOME
@@ -15,11 +16,15 @@
 7. install android sdks & tools via sdk manager (including NDK)
 8. npm install -g expo-cli
 
+## Android 
+
 # create project
 1. expo init [proj_name]
 2. choose bareminimum
 
-# expo build ([origin](https://docs.expo.io/distribution/building-standalone-apps/#__next))
+# Android build
+
+## using expo ([origin](https://docs.expo.io/distribution/building-standalone-apps/#__next))
 1. add bundleIds to app.json:
 ```	 {
 	   "expo": {
@@ -37,15 +42,15 @@
 	 }
 ```
 
-2. for android:
+2. run:
 
 	expo build:android -t apk
 	
-or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
+or config app [signing](https://docs.expo.io/distribution/app-signing/) then run:
 
 		expo build:android -t app-bundle 
 
-# android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
+## android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
 1. npm install -g jetifier
 2. npx jetify
 3. (run on background terminal) npx react-native start
@@ -64,7 +69,7 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 	MYAPP_UPLOAD_KEY_PASSWORD=*****
 ```
 *Note:*
-* do NOT push gradle.properties to git!!
+* **do NOT push gradle.properties to git!!**
 * a more secure way can be provided using OS tools
 4. setup signing options in app/build.gradle:
 ```
@@ -103,3 +108,11 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 	    abortOnError false
 	  }
 ```
+* OutOfMemory errors on build => add to gradle.properties on android:
+```
+org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m
+```
+
+# iOS build
+
+## Background
