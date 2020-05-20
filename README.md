@@ -144,6 +144,6 @@ To simulate iOS products, we can use:
 * use [Appetize](https://appetize.io/) web service
 
 ## Install Mac on PC
-1. install Mac virtual machice
+1. install [Mac virtual machine](https://www.geekrar.com/install-macos-mojave-on-virtualbox-on-windows-pc-new-method/)
 2. make a bootable Mac installation usb (using the virtual machine)
 3. boot & install Mac from the usb
