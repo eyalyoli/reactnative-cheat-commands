@@ -40,7 +40,7 @@
 ### File watches limit fix
 If after running the metro bundler you get warnings/errors on number of file watched was reached then run:
 ```
-	echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+	echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
 ```
 
 # Android build
@@ -143,7 +143,7 @@ To simulate iOS products, we can use:
 * a pyshical iOS device
 * use [Appetize](https://appetize.io/) web service
 
-## install Mac on PC
+## Install Mac on PC
 1. install Mac virtual machice
 2. make a bootable Mac installation usb (using the virtual machine)
 3. boot & install Mac from the usb
