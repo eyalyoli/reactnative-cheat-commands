@@ -6,6 +6,7 @@
 4. install watchman?
 5. npm install -g expo-cli
 
+
 ## Android setup
 1. install android sdk (or android studio)
 2. set env:
@@ -22,10 +23,25 @@
 1. install [cocaopods](@)
 2. ...
 
-# create project
+# Project management
+## Create project
 1. expo init [proj_name]
 2. choose bareminimum
-echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+
+## Run project
+### Using expo
+1. expo start - this runs the metro bundler
+2. choose from the opened web UI where to run the app
+
+### Using react-native
+1. to run the metro bundler, run on a background terminal: ```npx react-native start```
+2. run: npx react-native run-android/run-ios
+
+### File watches limit fix
+If after running the metro bundler you get warnings/errors on number of file watched was reached then run:
+```
+	echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+```
 
 # Android build
 
@@ -58,7 +74,7 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then run
 ## Android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
 1. npm install -g jetifier
 2. npx jetify
-3. (run on background terminal) npx react-native start
+3. run on background terminal: npx react-native start
 4. cd android
 5. setup keystore (see below) 
 6. ./gradlew bundleRelease
