@@ -50,10 +50,6 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 2. npx jetify
 3. (run on background terminal) npx react-native start
 4. cd android
-5. add to build.gradle below allprojects:
-```
-	tasks.withType(Javadoc).all { enabled = false }
-```
 
 ## setup keystore
 1. keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000
@@ -94,3 +90,15 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 	...
 ```
 5. ./gradlew bundleRelease
+
+## build troubleshooting
+* "Task :react-native-reanimated:androidJavadoc FAILED" => add to build.gradle below allprojects:
+```
+	tasks.withType(Javadoc).all { enabled = false }
+```
+* "Lint found error on the project. Aborting build..." => add to the module's build.gradle under android:
+```
+	lintOptions {
+	    abortOnError false
+	  }
+```
