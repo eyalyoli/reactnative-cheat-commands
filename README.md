@@ -19,7 +19,7 @@
 1. expo init [proj_name]
 2. choose bareminimum
 
-# expo build ([origin](https://docs.expo.io/distribution/building-standalone-apps/#__next)
+# expo build ([origin](https://docs.expo.io/distribution/building-standalone-apps/#__next))
 1. add bundleIds to app.json:
 ```	 {
 	   "expo": {
@@ -43,9 +43,9 @@
 	
 or config app [signing](https://docs.expo.io/distribution/app-signing/) then:
 
-	expo build:android -t app-bundle 
+		expo build:android -t app-bundle 
 
-# android native build @https://reactnative.dev/docs/signed-apk-android
+# android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
 1. npm install -g jetifier
 2. npx jetify
 3. (run on background terminal) npx react-native start
