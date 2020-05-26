@@ -77,7 +77,8 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then run
 3. run on background terminal: ``npx react-native start``
 4. ```cd android```
 5. setup keystore (see below) 
-6. ```./gradlew bundleRelease```
+6. ```./gradlew clean```
+7. ```./gradlew bundleRelease```
 
 ## Setup keystore
 1. ```keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000```
