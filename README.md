@@ -77,9 +77,11 @@ or config app [signing](https://docs.expo.io/distribution/app-signing/) then run
 3. run on background terminal: ``npx react-native start``
 4. ```cd android```
 5. setup keystore (see below) 
-6. ```npm i --save-dev @react-native-community/cli```
-7. ```./gradlew bundleRelease```
-The apk will wait for you in ```/android/app/build/outputs/bundle/release```
+6. For direct install on device use APK format:
+	```./gradlew assembleRelease``` (add ```--stacktrace``` to catch error)
+   For publishing use Android App Bundle format:
+	```./gradlew bundleRelease``` (add ```--stacktrace``` to catch error)
+The build will wait for you in ```/android/app/build/outputs/```
 
 ## Setup keystore
 1. ```keytool -genkeypair -v -keystore [my-upload-key].keystore -alias [my-key-alias] -keyalg RSA -keysize 2048 -validity 10000```
@@ -121,6 +123,7 @@ The apk will wait for you in ```/android/app/build/outputs/bundle/release```
 ```
 
 ## Build troubleshooting
+* "Task :app:createReleaseExpoManifest FAILED" and "Error: Failed to connect to the packager server" => check step 3!
 * "Task :react-native-reanimated:androidJavadoc FAILED" => add to build.gradle below allprojects:
 ```
 	tasks.withType(Javadoc).all { enabled = false }
@@ -134,6 +137,10 @@ The apk will wait for you in ```/android/app/build/outputs/bundle/release```
 * OutOfMemory errors on build => add to gradle.properties on android:
 ```
 org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m
+```
+* "Task :app:createReleaseExpoManifest FAILED'" and "Error: Cannot find module '@react-native-community/cli/build" => run
+```
+npm i --save-dev @react-native-community/cli
 ```
 
 # iOS build
