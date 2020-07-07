@@ -9,7 +9,9 @@
 
 ## Android setup
 1. install android cmdtools (or android studio)
+	
 	1.1. for cmdtools - extract zip to ```$ANDROID_HOME/cmdline-tools/```
+	
 	1.2. ```tools``` and ```tools/bin``` now should be under ```cmdline-tools``` (when setting env)
 2. set env:
 ```
