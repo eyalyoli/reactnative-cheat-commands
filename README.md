@@ -1,14 +1,16 @@
 # Setup react native env ([origin](https://reactnative.dev/docs/environment-setup))
 ## React native with expo-cli
 1. install node
-2. install jdk
+2. install jdk (better to go with openjdk) - you can check the version with ```java -version```
 3. set env JAVA_HOME
 4. install watchman?
 5. ```npm install -g expo-cli```
 
 
 ## Android setup
-1. install android sdk (or android studio)
+1. install android cmdtools (or android studio)
+	1.1. for cmdtools - extract zip to ```$ANDROID_HOME/cmdline-tools/```
+	1.2. ```tools``` and ```tools/bin``` now should be under ```cmdline-tools``` (when setting env)
 2. set env:
 ```
 	export ANDROID_HOME=$HOME/Android/Sdk
@@ -20,6 +22,8 @@
 3. install android sdks & tools via sdk manager (including NDK)
 
 ## iOS setup
+1. all installation are done with brew - ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)```
+2. install openjdk - ```brew cask install adoptopenjdk```
 1. install [cocaopods](https://guides.cocoapods.org/using/getting-started.html) - deps managment
 2. ...
 
