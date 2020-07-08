@@ -76,7 +76,7 @@ echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
 	
 or config app [signing](https://docs.expo.io/distribution/app-signing/) then run:
 
-		expo build:android -t app-bundle 
+```expo build:android -t app-bundle```
 
 ## Android native build ([origin](https://reactnative.dev/docs/signed-apk-android))
 1. ``npm install -g jetifier``
@@ -174,3 +174,22 @@ xcode-select --install
   run xcode gui after that
 * "SDK “iphoneos” cannot be located" => ```sudo xcode-select --switch /Applications/Xcode.app``` after installing xcode from app store
 
+# Libraries
+
+## Kitten UI
+* to run kittenUI for web you need to:
+	1. ```npm i -D @expo/webpack-config```
+	2. create ```webpack.config.js``` in root with the contents:
+	```
+	const createExpoWebpackConfigAsync = require('@expo/webpack-config');
+
+	module.exports = async function(env, argv) {
+	    const config = await createExpoWebpackConfigAsync({
+		...env,
+		babel: {
+		    dangerouslyAddModulePathsToTranspile: ['@ui-kitten/components']
+		}
+	    }, argv);
+	    return config;
+	};
+	```
