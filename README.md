@@ -15,11 +15,11 @@
 	1.2. ```tools``` and ```tools/bin``` now should be under ```cmdline-tools``` (when setting env)
 2. set env:
 ```
-	export ANDROID_HOME=$HOME/Android/Sdk
-	export PATH=$PATH:$ANDROID_HOME/emulator
-	export PATH=$PATH:$ANDROID_HOME/tools
-	export PATH=$PATH:$ANDROID_HOME/tools/bin
-	export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
 3. install android sdks & tools via sdk manager (including NDK)
 
@@ -46,27 +46,28 @@
 ### File watches limit fix
 If after running the metro bundler you get warnings/errors on number of file watched was reached then run:
 ```
-	echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
 ```
 
 # Android build
 
 ## Using expo ([origin](https://docs.expo.io/distribution/building-standalone-apps/#__next))
 1. add bundleIds to app.json:
-```	 {
-	   "expo": {
-	    ...
-	    "ios": {
-	      "bundleIdentifier": "com.yourcompany.yourappname",
-	      "buildNumber": "1.0.0"
-	    },
-	    "android": {
-	      "package": "com.yourcompany.yourappname",
-	      "versionCode": 1
-	    }
-	    ...
-	   }
-	 }
+```
+{
+   "expo": {
+    ...
+    "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
+    }
+    ...
+   }
+ }
 ```
 
 2. run:
@@ -94,51 +95,51 @@ The build will wait for you in ```/android/app/build/outputs/```
 2. place keystore on android dir
 3. add to gradle.properties:
 ```
-	MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
-	MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
-	MYAPP_UPLOAD_STORE_PASSWORD=*****
-	MYAPP_UPLOAD_KEY_PASSWORD=*****
+MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+MYAPP_UPLOAD_STORE_PASSWORD=*****
+MYAPP_UPLOAD_KEY_PASSWORD=*****
 ```
 *Note:*
 * **do NOT push gradle.properties to git!!**
 * a more secure way can be provided using OS tools
 4. setup signing options in app/build.gradle:
 ```
-	...
-	android {
-	    ...
-	    defaultConfig { ... }
-	    signingConfigs {
-		release {
-		    if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-		        storeFile file(MYAPP_UPLOAD_STORE_FILE)
-		        storePassword MYAPP_UPLOAD_STORE_PASSWORD
-		        keyAlias MYAPP_UPLOAD_KEY_ALIAS
-		        keyPassword MYAPP_UPLOAD_KEY_PASSWORD
-		    }
-		}
-	    }
-	    buildTypes {
-		release {
-		    ...
-		    signingConfig signingConfigs.release
-		}
+...
+android {
+    ...
+    defaultConfig { ... }
+    signingConfigs {
+	release {
+	    if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+		storeFile file(MYAPP_UPLOAD_STORE_FILE)
+		storePassword MYAPP_UPLOAD_STORE_PASSWORD
+		keyAlias MYAPP_UPLOAD_KEY_ALIAS
+		keyPassword MYAPP_UPLOAD_KEY_PASSWORD
 	    }
 	}
-	...
+    }
+    buildTypes {
+	release {
+	    ...
+	    signingConfig signingConfigs.release
+	}
+    }
+}
+...
 ```
 
 ## Build troubleshooting
 * "Task :app:createReleaseExpoManifest FAILED" and "Error: Failed to connect to the packager server" => check step 3!
 * "Task :react-native-reanimated:androidJavadoc FAILED" => add to build.gradle below allprojects:
 ```
-	tasks.withType(Javadoc).all { enabled = false }
+tasks.withType(Javadoc).all { enabled = false }
 ```
 * "Lint found error on the project. Aborting build..." => add to the module's build.gradle under android:
 ```
-	lintOptions {
-	    abortOnError false
-	  }
+lintOptions {
+	abortOnError false
+}
 ```
 * OutOfMemory errors on build => add to gradle.properties on android:
 ```
@@ -162,3 +163,14 @@ To simulate iOS products, we can use:
 1. install [Mac virtual machine](https://www.geekrar.com/install-macos-mojave-on-virtualbox-on-windows-pc-new-method/)
 2. make a bootable Mac installation usb (using the virtual machine)
 3. boot & install Mac from the usb
+
+## Build troubleshooting
+* "gyp: No Xcode or CLT version detected" => run
+```
+xcode-select --print-path
+sudo rm -r -f /Library/Developer/CommandLineTools
+xcode-select --install
+```
+  run xcode gui after that
+* "SDK “iphoneos” cannot be located" => ```sudo xcode-select --switch /Applications/Xcode.app``` after installing xcode from app store
+
