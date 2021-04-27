@@ -1,10 +1,11 @@
 # Setup react native env ([origin](https://reactnative.dev/docs/environment-setup))
 ## React native with expo-cli
 1. install node
-2. install jdk (better to go with openjdk) - you can check the version with ```java -version```
+2. install jdk - better to go with openjdk, gradle 6.3 (check your gradle compatibility) supports jdk14 (you can check the version with ```java -version```), for macOS ```brew cask install adoptopenjdk14```
 3. set env JAVA_HOME
-4. install watchman (for macOS is a must using `brew install watchman`)
+4. install watchman (for macOS it is a must - `brew install watchman`)
 5. ```npm install -g expo-cli```
+6. ```npm install -g react-native react-native-cli``` - recommended as the project is moving to pure RN
 
 
 ## Android setup
@@ -25,9 +26,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ## iOS setup
 1. all installation are done with brew - ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)```
-2. install openjdk - ```brew cask install adoptopenjdk14``` (jdk14 for gradle 6.3 - check your gradle compatibility)
-3. install [cocaopods](https://guides.cocoapods.org/using/getting-started.html) - deps managment
-4. ...
+2. install [cocaopods](https://guides.cocoapods.org/using/getting-started.html) - deps managment
+3. `npx pod install`
 
 # Project management
 ## Create project
@@ -149,6 +149,9 @@ org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m
 ```
 npm i --save-dev @react-native-community/cli
 ```
+* The app gets build but can't run on a device becuase of hard to understand (not your code) errors => 
+  1. maybe the device is not connected to ADB or your PC's network?
+  2. maybe react-native is not installed correct globally?! You can check this by `npm list -g` this should show you what you installed in env setup above
 
 # iOS build
 
