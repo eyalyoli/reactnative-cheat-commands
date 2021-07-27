@@ -22,7 +22,16 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 ```
-3. install android sdks & tools via sdk manager (including NDK)
+3. install android sdks & tools via sdk manager (including NDK), example:
+```
+add-ons;addon-google_apis-google-24
+platform-tools
+platforms;android-28
+emulator
+extras;google;google_play_services
+system-images;android-28;google_apis_playstore;x86_64
+ndk-bundle
+```
 
 ## iOS setup
 1. all installation are done with brew - ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)```
