@@ -162,6 +162,11 @@ npm i --save-dev @react-native-community/cli
   1. maybe the device is not connected to ADB or your PC's network?
   2. maybe react-native is not installed correct globally?! You can check this by `npm list -g` this should show you what you installed in env setup above
 
+* "Cannot find module in /node_modules/..." and they exist =>
+  1. clean-up the project and re-run
+  2. else refresh `package-lock.json` (remove and install again)
+  3. else use `npx` with `react-native` commands
+
 # iOS build
 
 ## Background
@@ -185,7 +190,6 @@ xcode-select --install
 ```
   run xcode gui after that
 * "SDK “iphoneos” cannot be located" => ```sudo xcode-select --switch /Applications/Xcode.app``` after installing xcode from app store
-* "Cannot find module in /node_modules/..." and they exist => clean-up the project and re-run, else refresh `package-lock.json`, else use `npx` with `react-native` commands
 
 # Libraries
 
