@@ -185,6 +185,7 @@ xcode-select --install
 ```
   run xcode gui after that
 * "SDK “iphoneos” cannot be located" => ```sudo xcode-select --switch /Applications/Xcode.app``` after installing xcode from app store
+* "Cannot find module in /node_modules/..." and they exist => clean-up the project and re-run, else refresh `package-lock.json`, else use `npx` with `react-native` commands
 
 # Libraries
 
